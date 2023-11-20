@@ -67,9 +67,8 @@
 
 
         <script type="text/javascript">
-            
 
-                let pierreDupont = {
+            let pierreDupont = {
                 name: "Dupont",
                 firstName: "Pierre",
                 class: "Kercode",
@@ -84,10 +83,30 @@
                 firstName: "John",
                 class: "CDUI",
             };
-            let groupeEleves = [pierreDupont, marieFontaine, johnHunter];
+            let groupeEleves = [pierreDupont, marieFontaine, johnHunter]
 
-            console.log(groupeEleves[1][firstName])
+            console.log(groupeEleves[0].firstName);
+            console.log(groupeEleves[1].class);
 
+            marieFontaine.noteMath = 17;
+            johnHunter.noteMath = 13;
+
+            console.log(groupeEleves[1].noteMath);
+            console.log(groupeEleves[2].noteMath);
+
+            //ajoute valeurs noteAlgo à chaque élève
+            groupeEleves[0, 1, 2].noteAlgo;
+
+            //fonction qui ajoute la note aléatoire à chaque élève
+            function generateNewNote(noteAlgo) {
+                for (let i = 0; i > 3; i++) {
+                    let newNote = 0;
+                    //méthode qui détermine aléatoirement et retourne une note
+                    Math.round(Math.random() * (20 - 0) + 0);
+                    return noteAlgo.push(newNote);
+                }
+            }
+            console.log(groupeEleves[0].noteAlgo)
         </script>
 </body>
 
