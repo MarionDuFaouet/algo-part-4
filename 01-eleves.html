@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Exo d'Algo(Part 4) - #01 - Les élèves</title>
     <link href="./css/style.css" rel="stylesheet" />
-    <!-- script type="text/javascript" src="./js/eleve.js"></script -->
+    <script type="text/javascript" src="./js/eleve.js"></script>
 </head>
 
 <body>
@@ -68,38 +68,59 @@
 
         <script type="text/javascript">
 
-            let pierreDupont = {
-                name: "Dupont",
-                firstName: "Pierre",
-                class: "Kercode",
-            };
-            let marieFontaine = {
-                name: "Fontaine",
-                firstName: "Marie",
-                class: "CDA",
-            };
-            let johnHunter = {
-                name: "Hunter",
-                firstName: "John",
-                class: "CDUI",
-            };
-            let groupeEleves = [pierreDupont, marieFontaine, johnHunter]
+            //création de la classe
+            let groupeEleves = [];
 
-            console.log(groupeEleves[0].firstName);
-            console.log(groupeEleves[1].class);
+            //génère une note aléatoire
+            function randomIntFromInterval(min, max) { // min and max included
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
 
-            marieFontaine.noteMath = 17;
-            johnHunter.noteMath = 13;
+            //------------------Correction étape 2 ------------------------
 
-            console.log(groupeEleves[1].noteMath);
-            console.log(groupeEleves[2].noteMath);
+            //création des 3 élèves et rangement dans le tableau des élèves
+            pierreDupont = new Eleve("Dupont", "Pierre", "Kercode");
+            marieFontaine = new Eleve("Fontaine", "Marie", "CDA");
+            johnHunter = new Eleve("Hunter", "John", "Kercode");
+            groupeEleves.push(pierreDupont, marieFontaine, johnHunter);
 
-            //ajoute valeurs noteAlgo à chaque élève
-            groupeEleves[0, 1, 2].noteAlgo;
+            //lecture et affichage du prénom de l'objet pierreDupont
+            console.log(pierreDupont.firstName);
+            //lecture et affichage de la classe de l'objet marieFontaine
+            console.log(marieFontaine.course);
 
-            console.log(groupeEleves[0].noteAlgo)
+            //attribution de notes en maths
+            marieFontaine.notes.maths.push(7);
+            johnHunter.notes.maths.push(19);
 
-            //fonction qui calcule la moyenne des notes en algo de tous les élèves
+            //attribution de notes aléatoires en algorithmique à chaque élève
+            for (let i = 0; i < groupeEleves.length; i++) {
+                groupeEleves[i].notes.algorithmique.push(randomIntFromInterval(0, 20));
+            }
+
+            //version forEach() pour attribution des notes aléatoires
+            groupeEleves.forEach(eleve => { eleve.notes.algorithmique.push(randomIntFromInterval(0, 20)) });
+
+            //indice de départ 
+            let moyenne = 0;
+
+            //calcule la moyenne des notes en algorithmique
+            let sum = 0;
+            let count = 0;
+            for (let i = 0; i < groupeEleves.length; i++) {
+                for (let j = 0; j < groupeEleves[i].notes.algorithmique.length; j++) {
+                    sum += groupeEleves[i].notes.algorithmique[j];
+                    count++;
+                }
+            }
+            console.log(`La moyenne des notes en algorithmique est de ${(sum / count).toFixed(2)}`);
+
+            // ------------------------correction etape 3-----------------------------
+            //appel par l'objet johnHunter de la fonction bonjour()
+            johnHunter.bonjour();
+
+            //ajoute paramètre à l'objet johnHunter.notes.algorithmique
+            johnHunter.addNoteAlgo(14);
 
         </script>
 </body>
